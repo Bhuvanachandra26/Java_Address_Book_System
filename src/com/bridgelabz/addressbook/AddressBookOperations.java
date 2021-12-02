@@ -42,7 +42,15 @@ public class AddressBookOperations {
                 switch (choice)
                 {
                     case 1:
-                        ContactOperations.Add_Contact(contact);
+                        System.out.print("Add Contact  \n");
+                        System.out.print("Enter First Name :");
+                        String fName=s.next();
+
+                        if (ContactOperations.checkDuplicate(fName,contact)==false) {
+                            ContactOperations.Add_Contact(fName,contact);
+                        } else {
+                            System.out.println("Already exists");
+                        }
                         break;
                     case 2:
                         ContactOperations.Display_All(contact);
