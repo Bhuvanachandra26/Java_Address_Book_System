@@ -1,17 +1,17 @@
 package com.bridgelabz.addressbook;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
-class ContactOperations{
-
+public class ContactOperations {
     static Scanner s=new Scanner(System.in);
 
-    public static void Add_Contact(List<Contact> contact) {
+    public static void Add_Contact(String fString,List<Contact> contact) {
         Contact c=new Contact();
-        System.out.print("Add Contact  \n");
-        System.out.print("Enter First Name: ");
-        c.setfirstName(s.next());
+
+        c.setfirstName(fString);
         System.out.print("Enter Last Name : ");
         c.setlastName(s.next());
         System.out.print("Enter City : ");
@@ -25,6 +25,16 @@ class ContactOperations{
         System.out.print("Enter Email ID : ");
         c.setemail(s.next());
         contact.add(c);
+
+    }
+
+    public static boolean checkDuplicate(String f_name,List<Contact> contact) {
+        for (Contact c : contact) {
+            if (c.getfirstName().equals(f_name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -74,9 +84,6 @@ class ContactOperations{
                 contact.remove(i);
                 System.out.println("Deleted Successfully !");
                 break;
-            }
-            else if(firstName!=(contact.get(i).getfirstName())){
-                System.out.println("Not Found!");
             }
         }
     }
