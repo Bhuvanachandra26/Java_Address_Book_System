@@ -1,84 +1,88 @@
 package com.bridgelabz.addressbook;
 
+import java.util.List;
+
 public class Contact {
-    String firstName, lastName, address, city, state, email;
-    long zip, phoneNumber;
+    private String firstName;
+    private String lastName;
+    private String city;
+    private String state;
+    private String zip;
+    private String phoneNumber;
+    private String email;
+    private List<Contact> contact;
 
-    public Contact() {
-    }
-
-    public Contact(String firstName, String lastName, String address, String city, String state, String email, long zip, long phoneNumber) {
+    public void setfirstName(String firstName) {
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.email = email;
-        this.zip = zip;
-        this.phoneNumber = phoneNumber;
     }
-
-    public String getFirstName() {
+    public String getfirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setlastName(String lastName) {
+        this.lastName = lastName;
     }
-
-    public String getLastName() {
+    public String getlastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setcity(String city) {
+        this.city = city;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
+    public String getcity() {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setstate(String state) {
+        this.state = state;
     }
-
-    public String getState() {
+    public String getstate() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setzip(String zip) {
+        this.zip = zip;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public long getZip() {
+    public String getzip() {
         return zip;
     }
 
-    public void setZip(long zip) {
-        this.zip = zip;
+    public void setphoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
-
-    public long getPhoneNumber() {
+    public String getphoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setemail(String email) {
+        this.email = email;
     }
+    public String getemail() {
+        return email;
+    }
+
+    @Override
+    public String toString() {
+        return '\n'+"Contact is"+'\n'+ "First Name: " + firstName +'\n'+ "Last  Name: " + lastName +'\n'+ "City : " + city +'\n'+ "State : " + state
+                + "zip : " + zip +'\n'+"Phone Number : " + phoneNumber +'\n'+ "Email Id: " + email +'\n';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean retVal = false;
+        if(!(obj instanceof Contact)){
+            return false;
+        }
+        Contact ptr= (Contact) obj;
+        retVal=ptr.firstName.toString()==this.firstName;
+        return retVal;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + (this.firstName != null ? this.firstName.hashCode() : 0);
+        return hash;
+    }
+
 }
