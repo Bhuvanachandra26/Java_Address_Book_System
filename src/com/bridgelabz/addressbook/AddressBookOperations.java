@@ -46,6 +46,9 @@ public class AddressBookOperations {
                 System.out.println("11.Sorted Contacts by State");
                 System.out.println("12.Sorted Contacts by Zip");
 
+                System.out.println("9.Sort Contacts by first Name");
+
+
                 choice=s.nextInt();
                 switch (choice)
                 {
@@ -81,6 +84,7 @@ public class AddressBookOperations {
                     case 8:
                         ContactOperations.countByState(contact);
                         break;
+
                     case 9:
                         ContactOperations.sortedContactByFirstName(contact);
                         break;
@@ -93,6 +97,13 @@ public class AddressBookOperations {
                     case 12:
                         ContactOperations.sortedContactByZip(contact);
                         break;
+
+
+                    case 9:
+                        ContactOperations.sortedContactByFirstName(contact);
+                        break;
+
+
                     default:
                         System.out.println("Enter valid option");
                         break;

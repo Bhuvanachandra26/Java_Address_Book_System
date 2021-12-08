@@ -117,11 +117,13 @@ public class ContactOperations {
         System.out.println(state+" : "+countNamesByState);
     }
 
+
     public static void sortedContactByFirstName(List<Contact> contact) {
 
         List<Contact> sortedContact=contact.stream().sorted(new compareFirstName()).collect(Collectors.toList());
         System.out.println(sortedContact);
     }
+
 
 
     public static void sortedContactByCity(List<Contact> contact) {
@@ -138,6 +140,7 @@ public class ContactOperations {
         contact.stream().sorted(new compareZip()).forEach(System.out::println);
 
     }
+
 }
 
 class compareFirstName implements Comparator<Contact> {
@@ -147,6 +150,7 @@ class compareFirstName implements Comparator<Contact> {
 
         return o1.getfirstName().compareTo(o2.getfirstName());
     }
+
 
 }
 
@@ -174,5 +178,6 @@ class compareZip implements Comparator<Contact> {
     public int compare(Contact o1, Contact o2) {
         return o1.getzip().compareTo(o2.getzip());
     }
+
 
 }
