@@ -1,17 +1,17 @@
 package com.bridgelabz.addressbook;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
-class ContactOperations{
-
+public class ContactOperations {
     static Scanner s=new Scanner(System.in);
 
-    public static void Add_Contact(List<Contact> contact) {
+    public static void Add_Contact(String fString,List<Contact> contact) {
         Contact c=new Contact();
-        System.out.print("Add Contact  \n");
-        System.out.print("Enter First Name: ");
-        c.setfirstName(s.next());
+
+        c.setfirstName(fString);
         System.out.print("Enter Last Name : ");
         c.setlastName(s.next());
         System.out.print("Enter City : ");
@@ -25,6 +25,16 @@ class ContactOperations{
         System.out.print("Enter Email ID : ");
         c.setemail(s.next());
         contact.add(c);
+
+    }
+
+    public static boolean checkDuplicate(String f_name,List<Contact> contact) {
+        for (Contact c : contact) {
+            if (c.getfirstName().equals(f_name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -75,9 +85,53 @@ class ContactOperations{
                 System.out.println("Deleted Successfully !");
                 break;
             }
-            else if(firstName!=(contact.get(i).getfirstName())){
-                System.out.println("Not Found!");
-            }
         }
     }
+
+    public static void searchByCityOrState(List<Contact> contact) {
+        System.out.println("Enter CityName: ");
+        String city = s.next();
+        contact.stream().filter(c -> c.getcity().equals(city)).forEach(System.out::println);
+    }
+
+    public static void viewPersonByCityOrState(List<Contact> contact) {
+        System.out.println("Enter CityName: ");
+        String city = s.next();
+        contact.stream().filter(c -> c.getcity().equals(city)).forEach(cn -> System.out.println("First Name : "+cn.getfirstName()+"  Last Name : "+cn.getlastName()));
+    }
+
+    public static void countByCity(List<Contact> contact) {
+
+        System.out.println("Enter the name of the city:");
+        String city=s.next();
+        Long countNamesByCity= contact.stream().filter(e -> city.equals(e.getcity())).count();
+        System.out.println(city+" : "+countNamesByCity);
+
+    }
+
+    public static void countByState(List<Contact> contact) {
+
+        System.out.println("Enter the name of the State:");
+        String state=s.next();
+        Long countNamesByState=contact.stream().filter(e -> state.equals(e.getstate())).count();
+        System.out.println(state+" : "+countNamesByState);
+    }
+
+    public static void sortedContactByFirstName(List<Contact> contact) {
+
+        List<Contact> sortedContact=contact.stream().sorted(new compareFirstName()).collect(Collectors.toList());
+        System.out.println(sortedContact);
+    }
+
+
+}
+
+class compareFirstName implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+
+        return o1.getfirstName().compareTo(o2.getfirstName());
+    }
+
 }
