@@ -42,6 +42,9 @@ public class AddressBookOperations {
                 System.out.println("7.Count of Total Contacts By City");
                 System.out.println("8.Count of Total Contacts By State");
 
+                System.out.println("9.Sort Contacts by first Name");
+
+
                 choice=s.nextInt();
                 switch (choice)
                 {
@@ -77,6 +80,11 @@ public class AddressBookOperations {
                     case 8:
                         ContactOperations.countByState(contact);
                         break;
+
+                    case 9:
+                        ContactOperations.sortedContactByFirstName(contact);
+                        break;
+
                     default:
                         System.out.println("Enter valid option");
                         break;
