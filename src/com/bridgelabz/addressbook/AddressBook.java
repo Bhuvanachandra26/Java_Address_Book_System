@@ -1,9 +1,11 @@
 package com.bridgelabz.addressbook;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public class AddressBook {
-
     static Scanner s=new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -30,5 +32,4 @@ public class AddressBook {
             }
         }while(option != 0);
     }
-
 }

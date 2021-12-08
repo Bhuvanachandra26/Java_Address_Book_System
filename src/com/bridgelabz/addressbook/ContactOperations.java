@@ -117,6 +117,7 @@ public class ContactOperations {
         System.out.println(state+" : "+countNamesByState);
     }
 
+
     public static void sortedContactByFirstName(List<Contact> contact) {
 
         List<Contact> sortedContact=contact.stream().sorted(new compareFirstName()).collect(Collectors.toList());
@@ -133,5 +134,6 @@ class compareFirstName implements Comparator<Contact> {
 
         return o1.getfirstName().compareTo(o2.getfirstName());
     }
+
 
 }
