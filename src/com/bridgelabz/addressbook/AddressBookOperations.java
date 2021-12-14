@@ -81,6 +81,7 @@ public class AddressBookOperations {
                     case 8:
                         ContactOperations.countByState(contact);
                         break;
+
                     case 9:
                         ContactOperations.sortedContactByFirstName(contact);
                         break;
@@ -93,6 +94,8 @@ public class AddressBookOperations {
                     case 12:
                         ContactOperations.sortedContactByZip(contact);
                         break;
+
+
                     default:
                         System.out.println("Enter valid option");
                         break;

@@ -117,22 +117,39 @@ public class ContactOperations {
         System.out.println(state+" : "+countNamesByState);
     }
 
+
     public static void sortedContactByFirstName(List<ContactAddress> contact) {
 
         List<ContactAddress> sortedContact=contact.stream().sorted(new compareFirstName()).collect(Collectors.toList());
+
+
+    public static void sortedContactByFirstName(List<Contact> contact) {
+
+        List<Contact> sortedContact=contact.stream().sorted(new compareFirstName()).collect(Collectors.toList());
+
         System.out.println(sortedContact);
     }
 
 
+
     public static void sortedContactByCity(List<ContactAddress> contact) {
+
+
+    public static void sortedContactByCity(List<Contact> contact) {
+
         contact.stream().sorted(new compareCity()).forEach(System.out::println);
 
     }
 
+
     public static void sortedContactByState(List<ContactAddress> contact) {
+
+    public static void sortedContactByState(List<Contact> contact) {
+
         contact.stream().sorted(new compareState()).forEach(System.out::println);
 
     }
+
 
     public static void sortedContactByZip(List<ContactAddress> contact) {
         contact.stream().sorted(new compareZip()).forEach(System.out::println);
@@ -145,8 +162,22 @@ class compareFirstName implements Comparator<ContactAddress> {
     @Override
     public int compare(ContactAddress o1, ContactAddress o2) {
 
+    public static void sortedContactByZip(List<Contact> contact) {
+        contact.stream().sorted(new compareZip()).forEach(System.out::println);
+
+    }
+
+}
+
+class compareFirstName implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+
+
         return o1.getfirstName().compareTo(o2.getfirstName());
     }
+
 
 }
 
@@ -154,19 +185,36 @@ class compareCity implements Comparator<ContactAddress> {
 
     @Override
     public int compare(ContactAddress o1, ContactAddress o2) {
+
+
+}
+
+class compareCity implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+
         return o1.getcity().compareTo(o2.getcity());
     }
 
 }
 
+
 class compareState implements Comparator<ContactAddress> {
 
     @Override
     public int compare(ContactAddress o1, ContactAddress o2) {
+
+class compareState implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+
         return o1.getstate().compareTo(o2.getstate());
     }
 
 }
+
 
 class compareZip implements Comparator<ContactAddress> {
 
@@ -174,5 +222,15 @@ class compareZip implements Comparator<ContactAddress> {
     public int compare(ContactAddress o1, ContactAddress o2) {
         return o1.getzip().compareTo(o2.getzip());
     }
+
+
+class compareZip implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+        return o1.getzip().compareTo(o2.getzip());
+    }
+
+
 
 }
