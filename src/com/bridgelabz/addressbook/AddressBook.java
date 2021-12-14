@@ -11,7 +11,7 @@ public class AddressBook {
     public static void main(String[] args) {
 
         int option;
-        Map<String, List<Contact>> addressBooks = new HashMap<String, List<Contact>>();
+        Map<String, List<ContactAddress>> addressBooks = new HashMap<String, List<ContactAddress>>();
         do {
             System.out.println("Enter 1 to Add AddressBook\nEnter 2 to Edit AddressBook\nEnter 3 to see All Address Books\n"
                     +"Enter 0 to Exit");

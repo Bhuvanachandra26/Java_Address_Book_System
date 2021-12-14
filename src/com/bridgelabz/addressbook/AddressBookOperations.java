@@ -10,13 +10,13 @@ public class AddressBookOperations {
     static String f_name;
     static Scanner s=new Scanner(System.in);
 
-    public static void addAddressBook(Map<String, List<Contact>> addressBooks) {
+    public static void addAddressBook(Map<String, List<ContactAddress>> addressBooks) {
         System.out.println("Add new AddressBook");
         String bookName = s.next();
-        addressBooks.put(bookName, new ArrayList<Contact>());
+        addressBooks.put(bookName, new ArrayList<ContactAddress>());
     }
 
-    public static void displayAllAddressBook(Map<String, List<Contact>> addressBooks) {
+    public static void displayAllAddressBook(Map<String, List<ContactAddress>> addressBooks) {
         boolean is_Empty=addressBooks.isEmpty();
         if(is_Empty==true)
             System.out.println("No Address Books are Present");
@@ -24,12 +24,12 @@ public class AddressBookOperations {
             System.out.println(addressBooks);
     }
 
-    public static void editAddressBook(Map<String, List<Contact>> addressBooks) {
+    public static void editAddressBook(Map<String, List<ContactAddress>> addressBooks) {
         System.out.println("Enter the name of the AddressBook you want to Edit");
         String bookName1 = s.next();
 
         if(addressBooks.containsKey(bookName1)) {
-            List<Contact> contact = addressBooks.get(bookName1);
+            List<ContactAddress> contact = addressBooks.get(bookName1);
             int choice;
             do{
                 System.out.println("Enter your option : ");
@@ -45,9 +45,6 @@ public class AddressBookOperations {
                 System.out.println("10.Sorted Contacts by City");
                 System.out.println("11.Sorted Contacts by State");
                 System.out.println("12.Sorted Contacts by Zip");
-
-                System.out.println("9.Sort Contacts by first Name");
-
 
                 choice=s.nextInt();
                 switch (choice)
@@ -96,11 +93,6 @@ public class AddressBookOperations {
                         break;
                     case 12:
                         ContactOperations.sortedContactByZip(contact);
-                        break;
-
-
-                    case 9:
-                        ContactOperations.sortedContactByFirstName(contact);
                         break;
 
 
