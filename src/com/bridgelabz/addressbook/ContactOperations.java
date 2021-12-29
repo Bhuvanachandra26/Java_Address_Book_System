@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class ContactOperations {
     static Scanner s=new Scanner(System.in);
 
-    public static void Add_Contact(String fString,List<Contact> contact) {
-        Contact c=new Contact();
+    public static void Add_Contact(String fString,List<ContactAddress> contact) {
+        ContactAddress c=new ContactAddress();
 
         c.setfirstName(fString);
         System.out.print("Enter Last Name : ");
@@ -28,8 +28,8 @@ public class ContactOperations {
 
     }
 
-    public static boolean checkDuplicate(String f_name,List<Contact> contact) {
-        for (Contact c : contact) {
+    public static boolean checkDuplicate(String f_name,List<ContactAddress> contact) {
+        for (ContactAddress c : contact) {
             if (c.getfirstName().equals(f_name)) {
                 return true;
             }
@@ -38,7 +38,7 @@ public class ContactOperations {
     }
 
 
-    public static void Display_All(List<Contact> contact){
+    public static void Display_All(List<ContactAddress> contact){
         boolean is_Empty=contact.isEmpty();
         if(is_Empty==true)
             System.out.println("Array List is Empty");
@@ -46,13 +46,13 @@ public class ContactOperations {
             System.out.println(contact);
     }
 
-    public static void editContact(List<Contact> contact ) {
+    public static void editContact(List<ContactAddress> contact ) {
         System.out.println("Enter first name that you want to Edit:");
         String firstName = s.next();
 
         for (int i = 0; i < contact.size(); i++) {
             if (contact.get(i).getfirstName().equalsIgnoreCase(firstName)) {
-                Contact c = contact.get(i);
+                ContactAddress c = contact.get(i);
                 System.out.print("Enter new First Name: ");
                 c.setfirstName(s.next());
                 System.out.print("Enter  new Last Name : ");
@@ -76,7 +76,7 @@ public class ContactOperations {
         }
     }
 
-    public static void deleteContact(List<Contact> contact){
+    public static void deleteContact(List<ContactAddress> contact){
         System.out.println("Enter first name that you want to Delete:");
         String firstName = s.next();
         for (int i = 0; i < contact.size(); i++) {
@@ -88,19 +88,19 @@ public class ContactOperations {
         }
     }
 
-    public static void searchByCityOrState(List<Contact> contact) {
+    public static void searchByCityOrState(List<ContactAddress> contact) {
         System.out.println("Enter CityName: ");
         String city = s.next();
         contact.stream().filter(c -> c.getcity().equals(city)).forEach(System.out::println);
     }
 
-    public static void viewPersonByCityOrState(List<Contact> contact) {
+    public static void viewPersonByCityOrState(List<ContactAddress> contact) {
         System.out.println("Enter CityName: ");
         String city = s.next();
         contact.stream().filter(c -> c.getcity().equals(city)).forEach(cn -> System.out.println("First Name : "+cn.getfirstName()+"  Last Name : "+cn.getlastName()));
     }
 
-    public static void countByCity(List<Contact> contact) {
+    public static void countByCity(List<ContactAddress> contact) {
 
         System.out.println("Enter the name of the city:");
         String city=s.next();
@@ -109,7 +109,7 @@ public class ContactOperations {
 
     }
 
-    public static void countByState(List<Contact> contact) {
+    public static void countByState(List<ContactAddress> contact) {
 
         System.out.println("Enter the name of the State:");
         String state=s.next();
@@ -122,7 +122,6 @@ public class ContactOperations {
         List<Contact> sortedContact=contact.stream().sorted(new compareFirstName()).collect(Collectors.toList());
         System.out.println(sortedContact);
     }
-
 
     public static void sortedContactByCity(List<Contact> contact) {
         contact.stream().sorted(new compareCity()).forEach(System.out::println);
@@ -147,7 +146,6 @@ class compareFirstName implements Comparator<Contact> {
 
         return o1.getfirstName().compareTo(o2.getfirstName());
     }
-
 }
 
 class compareCity implements Comparator<Contact> {
@@ -158,7 +156,6 @@ class compareCity implements Comparator<Contact> {
     }
 
 }
-
 class compareState implements Comparator<Contact> {
 
     @Override
@@ -167,12 +164,10 @@ class compareState implements Comparator<Contact> {
     }
 
 }
-
 class compareZip implements Comparator<Contact> {
 
     @Override
     public int compare(Contact o1, Contact o2) {
         return o1.getzip().compareTo(o2.getzip());
     }
-
 }
