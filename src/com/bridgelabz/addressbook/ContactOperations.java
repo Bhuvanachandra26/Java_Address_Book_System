@@ -116,4 +116,63 @@ public class ContactOperations {
         Long countNamesByState=contact.stream().filter(e -> state.equals(e.getstate())).count();
         System.out.println(state+" : "+countNamesByState);
     }
+
+    public static void sortedContactByFirstName(List<Contact> contact) {
+
+        List<Contact> sortedContact=contact.stream().sorted(new compareFirstName()).collect(Collectors.toList());
+        System.out.println(sortedContact);
+    }
+
+
+    public static void sortedContactByCity(List<Contact> contact) {
+        contact.stream().sorted(new compareCity()).forEach(System.out::println);
+
+    }
+
+    public static void sortedContactByState(List<Contact> contact) {
+        contact.stream().sorted(new compareState()).forEach(System.out::println);
+
+    }
+
+    public static void sortedContactByZip(List<Contact> contact) {
+        contact.stream().sorted(new compareZip()).forEach(System.out::println);
+
+    }
+}
+
+class compareFirstName implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+
+        return o1.getfirstName().compareTo(o2.getfirstName());
+    }
+
+}
+
+class compareCity implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+        return o1.getcity().compareTo(o2.getcity());
+    }
+
+}
+
+class compareState implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+        return o1.getstate().compareTo(o2.getstate());
+    }
+
+}
+
+class compareZip implements Comparator<Contact> {
+
+    @Override
+    public int compare(Contact o1, Contact o2) {
+        return o1.getzip().compareTo(o2.getzip());
+    }
+
 }
