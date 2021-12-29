@@ -11,7 +11,7 @@ import java.util.*;
 
 public class AddressBook {
     private static Scanner s = new Scanner(System.in);
-    private static File file = new File("E:\\BRIDGE LABZ RPF\\Java_Address_Book_System\\src\\com\\bridgelabz\\addressbook\\ContactFile");
+    private static File file = new File("E:\\BRIDGE LABZ RPF\\Java_Address_Book_System\\src\\com\\bridgelabz\\addressbook\\ContactFile.txt");
     static List<Contact> contact = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
@@ -70,7 +70,7 @@ public class AddressBook {
 
     public static void printData() throws IOException {
         try {
-            Files.lines(new File("C:\\Users\\Chaithra\\IdeaProjects\\AddressBookSystem\\src\\ContactFile.txt").toPath())
+            Files.lines(new File("E:\\BRIDGE LABZ RPF\\Java_Address_Book_System\\src\\com\\bridgelabz\\addressbook\\ContactFile.txt").toPath())
                     .forEach(System.out::println);
         }catch (IOException e) {
             e.printStackTrace();

@@ -64,7 +64,7 @@ public class AddressBookOperations {
                         ContactOperations.Display_All(contact);
                         break;
                     case 3:
-                    	ContactOperations.editContact(contact);
+                        ContactOperations.editContact(contact);
                         break;
                     case 4:
                         ContactOperations.deleteContact(contact);
